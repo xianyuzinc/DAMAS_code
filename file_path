@@ -1,0 +1,24 @@
+# ... existing code ...
+# 定义四个声源位置，形成"A"字母
+source_positions = {
+    'source1': {'x': -0.2, 'y': -0.2, 'z': 0.5},  # 左下角
+    'source2': {'x': -0.2, 'y': 0.2, 'z': 0.5},   # 左上角
+    'source3': {'x': 0.2, 'y': -0.2, 'z': 0.5},   # 右下角
+    'source4': {'x': 0.2, 'y': 0.2, 'z': 0.5}     # 右上角
+}
+
+# ... existing code ...
+
+# 生成扫描网格（回到原来的扫描区域大小）
+x_length, y_length, z_distance = 0.6, 0.6, 0.5  # 回到原来的x_length和y_length
+n_scan_points = 41  # 回到原来的扫描点数
+
+# ... existing code ...
+
+# DAMAS处理
+damas_result = process_damas(beamforming_result, e, max_iterations=1000)  # 回到原来的max_iterations
+
+# 可视化结果（回到原来的标题）
+titles = ['四源波束形成结果', '四源DAMAS结果']
+
+# ... existing code ... 
