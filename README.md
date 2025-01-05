@@ -3,7 +3,7 @@
 ## 项目概述
 本项目实现了一个完整的声源定位与声压级分析系统，包括波束形成、DAMAS系列算法以及FISTA算法等多种声源定位方法。系统能够处理多频率声源信号，生成声源定位图像，并分析不同方法下的声压级特性，代码均为python，相较于matlab的运行速度更快。
 
-目前项目不太成熟，仅供参考，如有问题可发邮件联系[本人]<xianyucauc@gmail.com>
+目前项目不太成熟，仅供参考，如有问题可发邮件联系本人<xianyucauc@gmail.com>
 
 本项目声源定位算法DAMAS、DAMAS2、DAMAS_FISTA、FISTA代码均来源于[HauLiang/Acoustic-Beamforming-Advanced: Scan-frequency Version for Acoustic Imaging, including the following methods: DAS, MUSIC, DAMAS, DAMAS2, DAMAS-FISTA, CLEAN-PSF, CLEAN-SC, FFT-NNLS, and FFT-DFISTA...](https://github.com/HauLiang/Acoustic-Beamforming-Advanced)
 
