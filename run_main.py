@@ -51,8 +51,8 @@ def process_frequency(freq, params, source_positions, mic_pos, scan_grid, x_pos,
     # 各种处理方法
     beamforming_result = delay_and_sum(R, e)
     damas_result = process_damas(beamforming_result, e, max_iterations=5000)
-    damas2_result = process_damas2(beamforming_result, e, max_iterations=5000)
-    damas_fista_result = process_damas_fista(beamforming_result, e, max_iterations=5000)
+    damas2_result = process_damas2(beamforming_result, e, max_iterations=50000)
+    damas_fista_result = process_damas_fista(beamforming_result, e, max_iterations=20000)
     
     # 准备PSF
     M, N, P = e.shape
@@ -134,18 +134,18 @@ def main():
     # 基本参数设置
     params = {
         'c': 343,           # 声速
-        'fs': 12800,        # 采样频率
-        'n_samples': 65536, # 采样点数
+        'fs': 48000,        # 采样频率
+        'n_samples': 262144, # 增加采样点数，确保大于 n_fft * k
         'coherence': 0,     # 不相干
-        'n_fft': 128,
-        'k': 300           # 快照数
+        'n_fft': 256,       # 减小FFT点数
+        'k': 400           # 调整快照数
     }
     
     # 频率范围设置
-    frequencies = np.arange(6000, 22000, 2000)
+    frequencies = np.arange(8000, 12000, 2000)
     
     # 麦克风阵列设置
-    n_elements, array_length = 8, 1
+    n_elements, array_length = 8, 0.8  # 8×8阵列，阵列尺寸为0.8m
     mic_pos = create_rect_array(n_elements, array_length)
     x_pos, y_pos, z_pos = mic_pos[0], mic_pos[1], mic_pos[2]
 
@@ -195,7 +195,7 @@ def main():
 
     # 扫描网格设置
     x_length, y_length, z_distance = 0.6, 0.6, 0.5
-    n_scan_points = 41
+    n_scan_points = 121  # 增加网格点数以获得更细的分辨率
     scan_grid = create_scan_grid(x_length, y_length, z_distance, n_scan_points)
     scan_x, scan_y = scan_grid[..., 0], scan_grid[..., 1]
 
